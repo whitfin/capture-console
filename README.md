@@ -1,4 +1,4 @@
-# capture-console [![Build Status](https://travis-ci.org/zackehh/capture-console.svg?branch=master)](https://travis-ci.org/zackehh/capture-console)
+# capture-console [![Build Status](https://travis-ci.org/whitfin/capture-console.svg?branch=master)](https://travis-ci.org/whitfin/capture-console)
 
 capture-console is a small Node.js library built to help when capturing log output via `process.stdout` and `process.stderr`. The main use case is unit testing (which is why I built it), but there's no reason it can't be used in production code paths.
 
@@ -67,4 +67,4 @@ capcon.stopCapture(process.stdout);
 
 You should be aware that all `capture` functions will still pass the values through to the main stdio `write()` functions, so logging will still go to your standard IO devices.
 
-If this is not desirable, you can use the `intercept` functions. These functions are literally `s/capture/intercept` when compared to those shown above, and the only difference is that calls aren't forwarded through to the base implementation.
+If this is not desirable, you can use the `intercept` functions. These functions are literally `s/capture/intercept/` when compared to those shown above, and the only difference is that calls aren't forwarded through to the base implementation.
