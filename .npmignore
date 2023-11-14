@@ -20,3 +20,8 @@ docs
 
 # tests
 test
+
+# CI utils
+.github
+.eslintrc.js
+
