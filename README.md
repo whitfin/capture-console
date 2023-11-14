@@ -1,4 +1,6 @@
-# capture-console [![Build Status](https://travis-ci.org/zackehh/capture-console.svg?branch=master)](https://travis-ci.org/zackehh/capture-console)
+# capture-console
+
+[![Build Status](https://img.shields.io/github/actions/workflow/status/whitfin/capture-console/ci.yml?branch=main)](https://github.com/whitfin/capture-console/actions) [![Published Version](https://img.shields.io/npm/v/capture-console.svg)](https://npmjs.com/package/capture-console) [![Published Downloads](https://img.shields.io/npm/dt/capture-console)](https://npmjs.com/package/capture-console)
 
 capture-console is a small Node.js library built to help when capturing log output via `process.stdout` and `process.stderr`. The main use case is unit testing (which is why I built it), but there's no reason it can't be used in production code paths.
 
@@ -21,19 +23,19 @@ The easiest way to use `capture-console` is with scoping; this is when the outpu
 Note that this form assumes synchronous execution - async stuff will require manual hookups (below).
 
 ```javascript
-var capcon = require('capture-console');
+const capcon = require('capture-console');
 
-var stderr = capcon.captureStderr(function scope() {
+let stderr = capcon.captureStderr(() => {
   // whatever is done in here has stderr captured,
   // the return value is a string containing stderr
 });
 
-var stdout = capcon.captureStdout(function scope() {
+let stdout = capcon.captureStdout(() => {
   // whatever is done in here has stdout captured,
   // the return value is a string containing stdout
 });
 
-var stdio = capcon.captureStdio(function scope() {
+let stdio = capcon.captureStdio(() => {
   // whatever is done in here has both stdout and stderr captured,
   // the return value is an object with 'stderr' and 'stdout' keys
 });
@@ -41,17 +43,17 @@ var stdio = capcon.captureStdio(function scope() {
 
 #### Manual Captures
 
-There are also ways to manually stop and start a capture context, by passing a process stream to watch and a callback to fire on each message. 
+There are also ways to manually stop and start a capture context, by passing a process stream to watch and a callback to fire on each message.
 
 ```javascript
-var capcon = require('capture-console');
+const capcon = require('capture-console');
 
 // our buffer
-var output = '';
+let output = '';
 
 // the first parameter here is the stream to capture, and the
 // second argument is the function receiving the output
-capcon.startCapture(process.stdout, function (stdout) {
+capcon.startCapture(process.stdout, stdout => {
   output += stdout;
 });
 
